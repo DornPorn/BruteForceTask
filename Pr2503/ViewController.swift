@@ -22,8 +22,14 @@ class ViewController: UIViewController {
         }
     }
     
+    var isStopped: Bool = false
+    
     @IBAction func onBut(_ sender: Any) {
         isBlack.toggle()
+    }
+    
+    @IBAction func stopAction(_ sender: Any) {
+        isStopped = true
     }
     
     override func viewDidLoad() {
@@ -31,12 +37,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonAction(_ sender: Any) {
+        isStopped = false
         var pw = ""
         DispatchQueue.main.async {
             self.resetUI()
             self.bruteForceActiviryIndicator.startAnimating()
-            pw = self.handler.generateRandomPasswordTounlock(length: 4)
-            self.passwordTextField.text = pw
+            
+            if let text = self.passwordTextField.text, !text.isEmpty {
+                pw = text
+            }
             
             DispatchQueue.global().async {
                 self.bruteForce(passwordToUnlock: pw)
@@ -48,13 +57,17 @@ class ViewController: UIViewController {
         let ALLOWED_CHARACTERS:   [String] = String().printable.map { String($0) }
         var password: String = ""
         // Will strangely ends at 0000 instead of ~~~
-        while password != passwordToUnlock { // Increase MAXIMUM_PASSWORD_SIZE value for more
+        while password != passwordToUnlock && !isStopped { // Increase MAXIMUM_PASSWORD_SIZE value for more
             password = handler.generateBruteForce(password, fromArray: ALLOWED_CHARACTERS)
+            
+            DispatchQueue.main.sync {
+                self.hackedPasswordLabel.text = password
+            }
         }
         
         DispatchQueue.main.async {
-            self.hackedPasswordLabel.text = password
-            self.passwordTextField.isSecureTextEntry = false
+            self.hackedPasswordLabel.text = self.isStopped ? "Password \(passwordToUnlock) hasn't been hacked" : password
+            self.passwordTextField.isSecureTextEntry = self.isStopped
             self.bruteForceActiviryIndicator.stopAnimating()
             self.bruteForceActiviryIndicator.isHidden = true
         }
