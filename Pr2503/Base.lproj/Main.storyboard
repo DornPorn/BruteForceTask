@@ -29,7 +29,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-GF-i0h">
                                         <rect key="frame" x="0.0" y="188" width="374" height="34"/>
                                         <subviews>
-                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ry4-4M-oQa">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ry4-4M-oQa">
                                                 <rect key="frame" x="0.0" y="0.0" width="344" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -42,19 +42,32 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g4-cd-RKK">
                                         <rect key="frame" x="0.0" y="389.5" width="374" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Change theme"/>
                                         <connections>
                                             <action selector="onBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XD4-sb-XPE"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpJ-qX-HRV">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bCC-h8-vWX">
                                         <rect key="frame" x="0.0" y="587" width="374" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Start"/>
-                                        <connections>
-                                            <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="85s-wp-u1Y"/>
-                                        </connections>
-                                    </button>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpJ-qX-HRV">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Start"/>
+                                                <connections>
+                                                    <action selector="buttonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="85s-wp-u1Y"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9y-jp-KvO">
+                                                <rect key="frame" x="187" y="0.0" width="187" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Stop"/>
+                                                <connections>
+                                                    <action selector="stopAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gRS-pv-Qet"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="GeI-GF-i0h" firstAttribute="top" secondItem="rEf-9L-oSk" secondAttribute="top" constant="188" id="of5-9d-L8w"/>
